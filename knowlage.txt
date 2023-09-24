@@ -1,0 +1,9 @@
+            
+            down lode link simple
+            /*
+            let a = document.createElement("A");
+            a.href="/exports/new.pdf"; // kis adress pe jana hey downlode kerney k leye ?
+            a.download = "new.pdf"; // Kis name se download kerna hey
+            a.click(); // khud he download ho ga
+            a.remove(); // ancker tag remove kia
+            */

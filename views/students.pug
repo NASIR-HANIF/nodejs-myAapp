@@ -1,0 +1,65 @@
+include profile
+    block loadStyle
+        link(rel="stylesheet", href="stylesheets/students.css") 
+    block loadScript
+        script(src="javascripts/students.js")        
+    block content
+        - const skeleton = ['a','b','c','d','e']
+        p.medium-font Students
+        div.card.container-fluid
+            div.card-body.border-none
+                div.row 
+                    div.col-md-3 
+                        div.d-flex.align-items-center
+                            button.btn.icon-btn-info.mx-2 
+                                i.fa.fa-cog.fa-spin
+                            input(
+                                type="text"
+                                class="input filter remove-focus form-control"
+                                placeholder="Search"
+                                )
+                    div.col-md-5 
+                    div.col-md-4.d-flex.justify-content-between.align-items-center 
+                        div.dropdown
+                            button.dropdown-toggle.btn.btn-light.mx-4(data-bs-toggle="dropdown") Export
+                            div.dropdown-menu 
+                                a.dropdown-item(href="#")#current Current
+                                a.dropdown-item(href="#")#all All 
+                        button.btn.btn-primary(data-bs-toggle="modal" data-bs-target="#student-modal") Add Students
+                div.table-responsive
+                    table.table.mt-5
+                        thead  
+                            tr
+                                th Profile
+                                th Email
+                                th Mobile
+                                th Father
+                                th Dob
+                                th Country
+                                th State
+                                th Pincode
+                                th Address
+                                th Status
+                                th CreatedAt
+                                th Action
+                        tbody.students-list 
+                            each data of skeleton
+                                tr.students-skeleton  
+                                    td(colspan="9").py-3
+                                        div.d-flex 
+                                            div.mx-3.d-flex.justify-content-center.align-items-center 
+                                                div.student-pic.skeleton 
+                                                    div.skeleton-loader
+                                            div.d-flex.w-100.flex-column 
+                                                div.student-title.mb-2.skeleton
+                                                    div.skeleton-loader
+                                                div.student-subtitle.skeleton 
+                                                    div.skeleton-loader     
+                    div.btn.float-end.pagination.mb-3
+                        button.border.btn-design(disabled)#prev 
+                            i.fa-solid.fa-chevron-left
+                        div.btn-group#student-pagination
+                        button.border.btn-design#next 
+                            i.fa-solid.fa-chevron-right
+        include register                                
+        div.tmp 
