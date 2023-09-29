@@ -6,7 +6,7 @@ const bcryptService = require(("../services/bcrypt.service"))
 
 router.post("/", async (request, response) => {
   let loginAs = request.body.loginAs
-  console.log(loginAs)
+  
 
   if (loginAs == "admin") {
     adminLoger(request, response)
@@ -26,7 +26,7 @@ router.post("/", async (request, response) => {
 const adminLoger = async (request, response) => {
   let expiresIn = 120;
   const token = await tokenService.create(request, expiresIn);
-  // getting company id
+  // getting user id
   const companyRes = await httpService.getRequest({
     endPoint: request.get("origin"),
     api: "/api/private/company",
@@ -51,6 +51,10 @@ const adminLoger = async (request, response) => {
       api: "/api/private/user",
       data: uidToken
     });
+
+    // update role in authToken
+    const role = userRes.data[0].role;
+    query.body['role'] = role
     // get user password 
     if (userRes.isCompanyExists) {
       // start alow single device login 
@@ -119,7 +123,7 @@ const employeeLoger = async (request, response) => {
     const query = {
       body: {
         uid: uid,
-        companyInfo: companyRes.data[0]
+        employeInfo: companyRes.data[0]
       },
       endPoint: request.get("origin"),
       originalUrl: request.originalUrl
@@ -132,6 +136,10 @@ const employeeLoger = async (request, response) => {
       api: "/api/private/user",
       data: uidToken
     });
+
+    // update role in authToken
+    const role = userRes.data[0].role;
+    query.body['role'] = role
     // get user password 
     if (userRes.isCompanyExists) {
       // start alow single device login 
@@ -200,7 +208,7 @@ const studentLoger = async (request, response) => {
     const query = {
       body: {
         uid: uid,
-        companyInfo: companyRes.data[0]
+        studentInfo: companyRes.data[0]
       },
       endPoint: request.get("origin"),
       originalUrl: request.originalUrl
@@ -213,6 +221,10 @@ const studentLoger = async (request, response) => {
       api: "/api/private/user",
       data: uidToken
     });
+
+    // update role in authToken
+    const role = userRes.data[0].role;
+    query.body['role'] = role
     // get user password 
     if (userRes.isCompanyExists) {
       // start alow single device login 

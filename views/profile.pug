@@ -10,7 +10,6 @@ html(lang="en")
         block loadScript
         title profile
     body(style="background : #f2f2f2")
-        - const toolbar = [{icon : "fa fa-bell",link : "/notifications", design : "icon-btn-dark"},{icon : "fa fa-user-secret",link : "/students", design : "icon-btn-primary"},{icon : "fa fa-users",link : "/teams", design : "icon-btn-warning"},{icon : "fa fa-cog",link : "/setting", design : "icon-btn-info"},{icon : "fa fa-sign-out-alt",link : "/logout", design : "icon-btn-danger"}]
         div.sidenav.sidenav-open
             div.d-flex.flex-column.align-items-center 
                 button.logo-box.mb-3.mt-3
@@ -22,12 +21,8 @@ html(lang="en")
             nav.navbar.navbar-expand-sm.px-3.py-3.bg-white.shadow-sm
                 button.btn.toggler 
                     i.fa.fa-align-left
-                ul.navbar-nav.w-100.justify-content-end 
-                    each menu of toolbar
-                        li.nav-item
-                            button.btn.toolbar.mx-2(class=menu.design) 
-                                a.nav-link(href=menu.link class=menu.design) 
-                                     i(class=menu.icon)
+                ul#toolbar.navbar-nav.w-100.justify-content-end 
+                   
             include toast                         
             div.mx-4.py-3 
                 block content

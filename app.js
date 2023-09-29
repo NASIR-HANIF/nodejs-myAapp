@@ -21,6 +21,7 @@ const logoutRoute = require("./routes/logout.routes");
 const studentsRoute = require("./routes/students.route");
 const sendMailRoute = require("./routes/sendMail.routes");
 const exportRoute = require("./routes/exports.route");
+const accessRouter = require("./routes/access.routes");
 const tokenRoute = require("./routes/token.routes");
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -71,9 +72,10 @@ app.use("/students",studentsRoute);
 app.use("/logout", logoutRoute);
 // kisi 1 roote ko alag se sepret karna ke leye us roote me alag security laga saktay hen
 app.use("/profile",authLogger(),profileRouter);
-app.use("/sendMail",sendMailRoute)
-app.use("/export-to-pdf",exportRoute)
-app.use("/get-token",tokenRoute)
+app.use("/sendMail",sendMailRoute);
+app.use("/export-to-pdf",exportRoute);
+app.use("/get-token",tokenRoute);
+app.use("/access",accessRouter);
 
 
 

@@ -1,3 +1,27 @@
+//loade access
+$(document).ready(async () => {
+    const request = {
+        type: "GET",
+        url: "/access"
+    }
+    const response = await ajax(request);
+    showToolbar(response.data.toolbar)
+})
+
+const showToolbar = (toolbar) => {
+    for (let menu of toolbar) {
+        let li = `
+        <li class="nav-item">
+            <button class="btn toolbar mx-2 ${menu.design}">
+                <a href="${menu.link}" class="nav-link ${menu.design}">
+                    <i class="${menu.icon}"></i>
+                </a>
+            </button>
+        </li>
+    `;
+        $("#toolbar").append(li);
+    }
+}
 
 $(document).ready(() => {
     $(".toggler").click(() => {
@@ -65,8 +89,8 @@ $(document).ready(function () {
                 if (isUpdated) {
                     $(".logo-box").html('');
                     $(".logo-box").css({
-                        backgroundImage : `url(${objectUrl})`,
-                        backgroundSize : "cover"
+                        backgroundImage: `url(${objectUrl})`,
+                        backgroundSize: "cover"
                     })
                 }
 
@@ -90,11 +114,11 @@ const updateLogoUrl = async (url) => {
 
     const request = {
         type: "PUT",
-        url: "/api/private/company/"+id,
+        url: "/api/private/company/" + id,
         data: formData
     }
     try {
-     await ajax(request);
+        await ajax(request);
         return true
     } catch (error) {
         return false
