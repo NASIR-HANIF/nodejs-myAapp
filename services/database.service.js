@@ -3,7 +3,7 @@ const companySchema = require("../models/company.model");
 const userSchema = require("../models/user.model");
 const studentSchema =require("../models/students.model");
  const url = "mongodb://127.0.0.1:27017/just-web";
- // const url = "mongodb+srv://iamnasir:crT56w0x4Q3XuhNH@nasirfirstcluster.l3hsvl6.mongodb.net/just-web"
+ // const url = ""
 mongo.connect(url);
 
 const schemaList = {
