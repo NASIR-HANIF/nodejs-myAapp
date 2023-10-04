@@ -1,11 +1,11 @@
 
 // email config credentiol
 const config = {
-    accessKeyId : "AKIATOUN3Z5IVN6LZQ5G",
-    secretAccessKey : "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",
-    region : "ap-southeast-1",
+    accessKeyId : "",
+    secretAccessKey : "",
+    region : "",
     params : {
-        Bucket : "docs.justweb.com"
+        Bucket : ""
     }
 }
 
